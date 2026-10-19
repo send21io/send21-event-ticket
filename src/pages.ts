@@ -28,7 +28,7 @@ export function eventPage(gate: Gate, mock: boolean, error?: string): string {
       const sold = left === 0;
       return `<li class="tier ${sold ? "sold" : ""}" data-tier="${esc(t.id)}" data-price="${t.price}" data-left="${left}">
 <span class="em">${esc(t.emoji)}</span>
-<div><b>${esc(t.name)}</b><span class="small">${sold ? "sold out" : `${left} left`}</span></div>
+<div><b>${esc(t.name)}</b><span class="small"> · ${sold ? "sold out" : `${left} left`}</span></div>
 <span class="pr">${esc(formatFiat(t.price, e.currency))}</span>
 <div class="qty">${sold ? "" : `<button type="button" class="step" data-op="-1" aria-label="fewer">−</button><output>0</output><button type="button" class="step" data-op="1" aria-label="more">+</button>`}</div>
 </li>`;

@@ -9,6 +9,7 @@ describe("🎟️ buy: reserve seats + ONE fiat pay link", () => {
     expect(html).toContain("Rooftop Sessions");
     expect(html).toContain("Early bird");
     expect(html).toContain("30 left");
+    expect(html).toContain("General</b><span class=\"small\"> · 80 left");
     expect(html).toContain("⚡ BTC · Lightning");
     await w.close();
   });
