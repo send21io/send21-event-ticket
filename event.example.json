@@ -1,0 +1,13 @@
+{
+  "id": "rooftop-sessions",
+  "name": "Rooftop Sessions",
+  "emoji": "🎧",
+  "when": "Sat 24 Oct · 20:00",
+  "venue": "The Roof · city centre",
+  "currency": "EUR",
+  "tiers": [
+    { "id": "ga", "name": "General", "emoji": "🎟️", "price": 18, "capacity": 80 },
+    { "id": "early", "name": "Early bird", "emoji": "🐦", "price": 12, "capacity": 30 },
+    { "id": "vip", "name": "VIP lounge", "emoji": "✨", "price": 45, "capacity": 12 }
+  ]
+}
