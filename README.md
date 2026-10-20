@@ -15,6 +15,7 @@
 1. **Try it now, no keys:** `npm install && npm run dev`, open http://localhost:3000. Pick tickets, pay on the mock page, open 📱 Show tickets. Door: http://localhost:3000/scan/demo. Organizer: http://localhost:3000/organizer/demo.
 2. **send21 key.** On [send21.io/api-keys](https://send21.io/api-keys), create a key with `drafts:write` (add `webhooks:manage` for step 4).
 3. **Configure.** `cp .env.example .env`: the key, `PUBLIC_URL`, your receiving addresses, and three secrets: `TICKET_SECRET`, `STAFF_TOKEN`, `ORGANIZER_TOKEN` (`openssl rand -hex 32`).
+   - 🔐 **Approve your receiving addresses in send21.** New send21 accounts (created on or after 20 Oct 2026) only accept receiving addresses the owner approved, including Lightning addresses. Add them in the send21 app, or propose one from an agent (MCP `propose_receiving_address`), then sign in and approve it with a passkey or authenticator code. No API key can approve an address. Older accounts can opt in under Settings.
 4. **Webhook.** Put the server behind your own HTTPS address (for example a reverse proxy with a free Let's Encrypt certificate and `TRUST_PROXY=1`), then `npm run webhook:register` and paste the printed `SEND21_WEBHOOK_SECRET` into `.env`.
 5. **Your night and go.** `cp event.example.json event.json`, edit the name, when, venue and tiers, then `npm run build && npm start`. Share `https://your-site/`.
 
@@ -60,6 +61,10 @@ sequenceDiagram
 **⚡ Lightning.** send21 fetches an invoice from your Lightning address and confirms the payment when your wallet provider supports **LUD-21**. Without it the money still reaches you, but tickets do not unlock on their own. See [Lightning](https://send21.io/docs/lightning).
 
 **Fees.** One small send21 fee per paid order (0.49% on small payments, at least $0.01), never taken from the payment. See [pricing](https://send21.io/pricing).
+
+## Troubleshooting
+
+- **422 `address_not_approved`:** a receiving address isn't approved in your send21 account, so nothing was created. Sign in to send21, approve the address (passkey or authenticator code), then try again.
 
 ## Security notes
 
